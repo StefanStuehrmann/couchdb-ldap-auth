@@ -43,7 +43,7 @@ handle_basic_auth_req(Req) ->
 
 handle_admin_role(#httpd{ user_ctx = #user_ctx{ name = User, roles = Roles } = UserCtx } = Req) when size(Roles) > 0 ->
   [SystemAdminRoleName] = get_config(["SystemAdminRoleName"]),
-  ?LOG_DEBUG("Checking for sytem admin role ~p in user ~p roles: ~p", SystemAdminRoleName, User, Roles),
+  ?LOG_DEBUG("Checking for sytem admin role ~p in user ~p roles: ~p", [ SystemAdminRoleName, User, Roles ]),
   case lists:member(SystemAdminRoleName, Roles) of
     true -> Req#httpd{ user_ctx = UserCtx#user_ctx{ roles = [<<"_admin">>|Roles] } };
     _ -> Req

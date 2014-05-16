@@ -13,6 +13,7 @@ First, check out the source and `cd` into it.
 ### Prerequisites
 - Erlang
 - Rebar
+- Erlang eldap library
 
 ### Build from Source
 
